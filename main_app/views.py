@@ -62,6 +62,9 @@ def login_view(request):
         return render(request, 'login.html', {'form': form})
 
 
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect('/')
 # class Cat:
 #     def __init__(self, name, breed, description, age):
 #         self.name = name

@@ -1,20 +1,25 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>CatCollectr</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
-  </head>
-  <body>
-		<h1>CatCollectr</h1>
-	<hr />
 
-		{% block content %}
-		{% endblock %}
+<head>
+  <title>CatCollectr</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
+</head>
 
-  	<footer>
-    	All Rights Reserved, CatCollectr 2017
-  	</footer>
-  </body>
+<body>
+  <h1>CatCollectr</h1>
+  <hr /> {% if user.is_authenticated %}
+  <a href="{% url 'profile' user.username %}">Hello, {{ user.username }}!</a> |
+  <a href="{% url 'logout' %}">Logout</a>
+  {% else %}
+  <a href="{% url 'login' %}">Login</a>
+  {% endif %} {% block content %} {% endblock %}
+
+  <footer>
+    All Rights Reserved, CatCollectr 2017
+  </footer>
+</body>
+
 </html>
