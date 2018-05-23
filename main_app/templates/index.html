@@ -11,9 +11,16 @@
 <body>
     <h1>CatCollectr</h1>
     {% for cat in cats %}
-    <p>Name: {{ cat.name }}</p>
-    <p>Age: {{ cat.age }} {% endfor %}
+    <a href="/{{cat.id}}">
+        <p>Name: {{ cat.name }}</p>
+        {% if cat.age > 0 %}
+        <p>Age: {{ cat.age }}</p>
+        {% else %}
+        <p>Age: Kitten</p>
+        {% endif %}
+    </a>
+    <hr /> {% endfor %}
 
-        <hr />
-        <footer>All Rights Reserved, CatCollectr 2018</footer>
+    <hr />
+    <footer>All Rights Reserved, CatCollectr 2018</footer>
 </body>

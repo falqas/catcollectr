@@ -14,6 +14,10 @@ def about(request):
     return HttpResponse('<h1>About me page!</h1>')
 
 
+def show(request, cat_id):
+    cat = Cat.objects.get(id=cat_id)
+    return render(request, 'show.html', {'cat': cat})
+
 # class Cat:
 #     def __init__(self, name, breed, description, age):
 #         self.name = name
