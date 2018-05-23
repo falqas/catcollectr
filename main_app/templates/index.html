@@ -1,26 +1,15 @@
+{% extends 'base.html' %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>CatCollectr</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
-</head>
-
-<body>
-    <h1>CatCollectr</h1>
-    {% for cat in cats %}
-    <a href="/{{cat.id}}">
-        <p>Name: {{ cat.name }}</p>
-        {% if cat.age > 0 %}
-        <p>Age: {{ cat.age }}</p>
-        {% else %}
-        <p>Age: Kitten</p>
-        {% endif %}
-    </a>
-    <hr /> {% endfor %}
-
-    <hr />
-    <footer>All Rights Reserved, CatCollectr 2018</footer>
-</body>
+{% block content %}
+{% for cat in cats %}
+<a href="/{{cat.id}}">
+    <p>Name: {{ cat.name }}</p>
+    {% if cat.age > 0 %}
+    <p>Age: {{ cat.age }}</p>
+    {% else %}
+    <p>Age: Kitten</p>
+    {% endif %}
+</a>
+<hr /> 
+{% endfor %} 
+{% endblock %}
