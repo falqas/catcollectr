@@ -2,6 +2,8 @@ from django.shortcuts import render
 from .models import Cat
 from .forms import CatForm
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.models import User
+
 # Create your views here.
 
 from django.http import HttpResponse
@@ -30,6 +32,12 @@ def post_cat(request):
         cat.user = request.user
         cat.save()
     return HttpResponseRedirect('/')
+
+
+def profile(request, username):
+    user = User.objects.get(username=username)
+    cats = Cat.objects.filter(user=user)
+    return render(request, 'profile.html', {'username': username, 'cats': cats})
 
 # class Cat:
 #     def __init__(self, name, breed, description, age):
