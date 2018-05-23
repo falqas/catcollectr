@@ -25,11 +25,9 @@ def show(request, cat_id):
 def post_cat(request):
     form = CatForm(request.POST)
     if form.is_valid():
-        cat = Cat(
-            name=form.cleaned_data['name'],
-            breed=form.cleaned_data['breed'],
-            description=form.cleaned_data['description'],
-            age=form.cleaned_data['age'])
+        cat = form.save(commit=False)
+        # Add this line...
+        cat.user = request.user
         cat.save()
     return HttpResponseRedirect('/')
 
