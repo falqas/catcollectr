@@ -1,15 +1,18 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
-  <head>
-		<title>CatCollectr</title>
-  </head>
-  <body>
-  <h1>CatCollectr</h1>
-  {% for cat in cats %}
-  <p>Name: {{ cat.name }}</p>
-    <p>Age: {{ cat.age }}
-  {% endfor %}
 
-  <hr />
-  <footer>All Rights Reserved, CatCollectr 2018</footer>
-  </body>
+<head>
+    <title>CatCollectr</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <h1>CatCollectr</h1>
+    {% for cat in cats %}
+    <p>Name: {{ cat.name }}</p>
+    <p>Age: {{ cat.age }} {% endfor %}
+
+        <hr />
+        <footer>All Rights Reserved, CatCollectr 2018</footer>
+</body>
