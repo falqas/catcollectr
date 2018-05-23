@@ -1,7 +1,4 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
-{% block content %}
-{% for cat in cats %}
+{% extends 'base.html' %} {% load staticfiles %} {% block content %} {% for cat in cats %}
 <a href="/{{cat.id}}">
     <p>Name: {{ cat.name }}</p>
     {% if cat.age > 0 %}
@@ -10,6 +7,10 @@
     <p>Age: Kitten</p>
     {% endif %}
 </a>
-<hr /> 
-{% endfor %} 
+<hr /> {% endfor %}
+<!-- main_app/index.html -->
+<form action="post_url/" method="post">
+    {% csrf_token %} {{ form.as_p }}
+    <input type="submit" value="Submit" />
+</form>
 {% endblock %}
